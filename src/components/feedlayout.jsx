@@ -6,6 +6,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import moment from 'moment'
+import TimeAgo from 'timeago-react';
 const Feedlayout=({key,date,desc,name,link,poster,logo,channelname})=>{
     const isMobile=useMediaQuery("(max-width:425px)");
     return(
@@ -28,7 +29,11 @@ const Feedlayout=({key,date,desc,name,link,poster,logo,channelname})=>{
    <Avatar alt=""src={logo} sx={{width:25}}/>
    <Typography variant="caption">{channelname}</Typography>
         </Stack>
-        <Typography variant="caption">{moment(date).startOf().fromNow()}</Typography>
+        <Typography variant="caption">
+        <TimeAgo
+  datetime={date}
+/>
+        </Typography>
         </Stack>
 </Paper>
 </>

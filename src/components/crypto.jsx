@@ -1,49 +1,43 @@
 /* eslint-disable react/prop-types */
  // eslint-disable-next-line react/prop-types
- import {Container,Autocomplete,TextField,CircularProgress} from "@mui/material";
+ import {Container,TextField,Stack} from "@mui/material";
  import {useState,useEffect} from "react";
 import "../App.css";
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import SearchIcon from '@mui/icons-material/Search';
 import CryptoCard from "./cryptolayout";
     // eslint-disable-next-line react/prop-types
         const Crypto=({allcoins})=>{
-        //const isMobile=useMediaQuery("(max-width:425px)")
         const[val,setVal]=useState('');
-        const[options,setOptions]=useState([]);
-        //const[showspin,setShowSpin]=useState(false);
+        console.log(val)
         const[coinslist,setCoinslist]=useState(allcoins);
-        const valuechange=(event,newVal)=>{
-            const searchedval=newVal.split('');
-            searchedval[0]=searchedval[0].toUpperCase();
-            const modifiedtext=searchedval.join("");
-            const cryptonames=allcoins.filter((elem)=>elem.name.includes(modifiedtext));
-          const listofcryptonames=cryptonames.map((el)=>el.name);
-          setOptions(listofcryptonames)
-         setVal(modifiedtext)
-         const singlecoin=allcoins.filter((item)=>item.name===modifiedtext);
-         setCoinslist(singlecoin)
-          
+        const cryptosearch=(e)=>{
+const inputValue=e.target.value;
+setVal(inputValue);
+if(inputValue===""){
+  setCoinslist(allcoins)
+}
+else{
+  const searchedVal=inputValue.charAt(0).toUpperCase()+inputValue.slice(1);
+  const singlecoin=allcoins.filter((elem)=>elem.name.includes(searchedVal));
+  setCoinslist(singlecoin)
+}
         }
-       
+
 return(
 <Container sx={{marginTop:8,marginBottom:4,padding:4}}>
-<Autocomplete className="autocomplete"
-inputValue={val}
-onInputChange={valuechange}
-renderInput={(params)=><TextField label="search coin"{...params}
-sx={{
-  width:250,
-  display:'block',
-  margin:'auto',
-}}/>}
-options={options}
-/>
-            
-            
-            <div 
+  <Stack direction="row"justifyContent="center"alignItems="center">
+   <TextField
+   value={val}
+   onChange={cryptosearch}
+   label="Search coins"
+   variant="outlined"
+   />
+   </Stack>            
+ <div 
 style={{
   display:'flex',
   justifyContent:'center',

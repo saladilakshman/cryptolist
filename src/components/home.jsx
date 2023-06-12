@@ -1,5 +1,5 @@
  import {Container,Typography,Stack,
-  useMediaQuery,useTheme,CircularProgress} from "@mui/material";
+  useMediaQuery,useTheme,CircularProgress,Button} from "@mui/material";
  import {useEffect,useState} from "react";
  import axios from "axios";
  import { useNavigate } from "react-router-dom";
@@ -74,15 +74,14 @@ return <Stack direction="column"key={index}>
     Top 10 CryptoCurrencies
   </Typography>
 
-  <Typography 
-  variant={isMobile?"body2":'h6'}
-   color={theme.palette.primary.main} 
+  <Button 
+  variant="text" 
    sx={{
-    '&:hover':{color:theme.palette.primary.light},cursor:'pointer'
+    '&:hover':{color:theme.palette.primary.light}
     }}
     onClick={()=>RouteNavigation('/crypto')}>
     Show more
-  </Typography>
+  </Button>
 </Stack>
 <div 
 style={{
@@ -112,15 +111,14 @@ return <CryptoCard
     Top CryptoNews
   </Typography>
 
-  <Typography 
-  variant={isMobile?"body2":'h6'}
-   color={theme.palette.primary.main} 
+  <Button 
+  variant="text"
    sx={{
-    '&:hover':{color:theme.palette.primary.light},cursor:'pointer'
+    '&:hover':{color:theme.palette.primary.light}
     }}
     onClick={()=>RouteNavigation("/feed")}>
     Show more
-  </Typography>
+  </Button>
 </Stack>
 <div 
 style={{

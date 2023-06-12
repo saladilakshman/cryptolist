@@ -124,6 +124,7 @@ box:{
   <Typography variant={isMobile?'h6':'h5'} sx={styles.logo}>Cryptolist</Typography>
 {
 isMobile?
+
 (<IconButton sx={{marginLeft:'auto'}}color="#1F0812"onClick={()=>setIsOpen(true)}>
   <MenuIcon/>
 </IconButton>)
@@ -137,15 +138,16 @@ isMobile?
 })}
 </Tabs>)
 }
+
 <Menu open={isOpen}
 onClose={handleclose}
- transformOrigin={{
+transformOrigin={{
   vertical:'top',
-  horizontal:'right'
+  horizontal:'right',
 }}
 anchorOrigin={{
-  vertical: 'top',
-  horizontal: 'right',
+  vertical:'top',
+  horizontal:'right'
 }}
 >
     {routeElements.map((routeElement,index)=>{
