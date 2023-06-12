@@ -5,7 +5,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import moment from 'moment'
+//import moment from 'moment'
 import TimeAgo from 'timeago-react';
 const Feedlayout=({key,date,desc,name,link,poster,logo,channelname})=>{
     const isMobile=useMediaQuery("(max-width:425px)");

@@ -18,72 +18,12 @@ const CoinInfo=()=>{
         coinName:coindetails?.name
     }
     const{coinNameColor,coinTextColor,coinName}=coinStyles;
-    const coinStatistics=[
-        {
-            symbol:<DollarOutlined />,
-            text:'Price to INR',
-            value:coindetails?.priceAt
-        },
-        {
-            symbol:<BorderlessTableOutlined />,
-            text:'Rank',
-            value:coindetails?.rank
-        },
-        {
-          symbol:<ThunderboltOutlined />,
-          text:'24h Volume',
-          value:coindetails["24hVolume"]
-        },
-        {
-           
-          symbol:<DollarOutlined />,
-          text:'Marketcap',
-          value:coindetails?.marketCap
-        },
-        {
-          
-          symbol:<TrophyOutlined/>,
-          text:'All-time-high(daily avg.)',
-          value:coindetails?.allTimeHigh?.price
-        },
-        {
-          
-          symbol:<FundOutlined />,
-          text:'Number Of Markets',
-          value:coindetails?.numberOfMarkets
-        },
-        {
-          
-          symbol:<AccountBookOutlined />,
-          text:'Number Of Exchanges',
-          value:coindetails?.numberOfExchanges
-        },
-        {
-          
-          symbol:<ExclamationCircleOutlined />,
-          text:'Approved supply',
-          value:coindetails?.supply?.confirmed
-        },
-        {
-          
-          symbol:<ExclamationCircleOutlined />,
-          text:'Total Supply ',
-          value:coindetails?.supply?.supplyAt
-        },
-        {
-          
-          symbol:<ExclamationCircleOutlined />,
-          text:'Circulating Supply ',
-          value:coindetails?.supply?.circulating
-        },
-
-    ]
     useEffect(()=>{
         const options = {
             method: 'GET',
-            url: 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd',
+            url: `https://coinranking1.p.rapidapi.com/coin/${coininfo}`,
             params: {
-              referenceCurrencyUuid:coininfo ,
+              referenceCurrencyUuid:'yhjMzLPhuIDl' ,
               timePeriod: '24h'
             },
             headers: {
@@ -98,7 +38,66 @@ const CoinInfo=()=>{
           })
           .catch(err=>console.log(err.message))
     },[coininfo])
+    const coinStatistics=[
+      {
+          symbol:<DollarOutlined />,
+          text:'Price to INR',
+          value:coindetails?.priceAt
+      },
+      {
+          symbol:<BorderlessTableOutlined />,
+          text:'Rank',
+          value:coindetails?.rank
+      },
+      {
+        symbol:<ThunderboltOutlined />,
+        text:'24h Volume',
+        value:coindetails["24hVolume"]
+      },
+      {
+         
+        symbol:<DollarOutlined />,
+        text:'Marketcap',
+        value:coindetails?.marketCap
+      },
+      {
+        
+        symbol:<TrophyOutlined/>,
+        text:'All-time-high(daily avg.)',
+        value:coindetails?.allTimeHigh?.price
+      },
+      {
+        
+        symbol:<FundOutlined />,
+        text:'Number Of Markets',
+        value:coindetails?.numberOfMarkets
+      },
+      {
+        
+        symbol:<AccountBookOutlined />,
+        text:'Number Of Exchanges',
+        value:coindetails?.numberOfExchanges
+      },
+      {
+        
+        symbol:<ExclamationCircleOutlined />,
+        text:'Approved supply',
+        value:coindetails?.supply?.confirmed
+      },
+      {
+        
+        symbol:<ExclamationCircleOutlined />,
+        text:'Total Supply ',
+        value:coindetails?.supply?.supplyAt
+      },
+      {
+        
+        symbol:<ExclamationCircleOutlined />,
+        text:'Circulating Supply ',
+        value:coindetails?.supply?.circulating
+      },
 
+  ]
     return <>
     {load?<div style={{
       display:'flex',
