@@ -22,7 +22,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 export default function App(){
   const[tab,setTab]=useState(0);
   const[selectedIndex,setSelectedIndex]=useState(0);
-  const[isOpen,setIsOpen]=useState(false);
   const[load,setLoad]=useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
   const[cryptocoinsdata,setCryptocoinsdata]=useState([]);
