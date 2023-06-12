@@ -24,6 +24,7 @@ export default function App(){
   const[selectedIndex,setSelectedIndex]=useState(0);
   const[isOpen,setIsOpen]=useState(false);
   const[load,setLoad]=useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
   const[cryptocoinsdata,setCryptocoinsdata]=useState([]);
   const[cryptocoinsnews,setCryptocoinsnews]=useState([]);
   async function getCoinData(){
@@ -80,7 +81,7 @@ export default function App(){
    getcryptonewsdata()
   },[])
   const handleclose=()=>{
-    setIsOpen(false)
+    setAnchorEl(null);
   }
   const routeElements=
   [
@@ -125,7 +126,7 @@ box:{
 {
 isMobile?
 
-(<IconButton sx={{marginLeft:'auto'}}color="#1F0812"onClick={()=>setIsOpen(true)}>
+(<IconButton sx={{marginLeft:'auto'}}color="#1F0812"onClick={(event)=> setAnchorEl(event.currentTarget)}>
   <MenuIcon/>
 </IconButton>)
 :
@@ -139,7 +140,8 @@ isMobile?
 </Tabs>)
 }
 
-<Menu open={isOpen}
+<Menu open={Boolean(anchorEl)}
+anchorEl={anchorEl}
 onClose={handleclose}
 transformOrigin={{
   vertical:'top',
@@ -149,14 +151,11 @@ anchorOrigin={{
   vertical:'top',
   horizontal:'right'
 }}
-sx={{
-  top:-82,
-  position:'absolute'
-}}
+
 >
     {routeElements.map((routeElement,index)=>{
       return <MenuItem key={index} selected={selectedIndex===index} onClick={()=>{
-        setIsOpen(prevState=>!prevState);
+        setAnchorEl(null);
         setSelectedIndex(index)
       }}
       component={Link}
