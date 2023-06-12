@@ -5,10 +5,10 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-//import moment from 'moment'
 import TimeAgo from 'timeago-react';
 const Feedlayout=({key,date,desc,name,link,poster,logo,channelname})=>{
     const isMobile=useMediaQuery("(max-width:425px)");
+  
     return(
 <>
 <Paper key={key} sx={{
@@ -32,7 +32,7 @@ const Feedlayout=({key,date,desc,name,link,poster,logo,channelname})=>{
         <Typography variant="caption">
         <TimeAgo
   datetime={date}
-/>
+  />
         </Typography>
         </Stack>
 </Paper>
