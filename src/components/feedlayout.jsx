@@ -1,42 +1,47 @@
 /* eslint-disable react/prop-types */
-import {Typography,Stack,Avatar,Paper,useMediaQuery } from "@mui/material";
+import {
+  Typography,
+  Box,
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  CardActionArea,
+} from "@mui/material";
 import "../App.css";
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import TimeAgo from 'timeago-react';
-const Feedlayout=({key,date,desc,name,link,poster,logo,channelname})=>{
-    const isMobile=useMediaQuery("(max-width:425px)");
-  
-    return(
-<>
-<Paper key={key} sx={{
-    display:'grid',
-    gridTemplateColumns:'1fr',
-    gridTemplateRows:isMobile?'repeat(3,auto)':'repeat(3,7.5rem)',
-    padding:0.2
-}} onClick={()=>window.location.href=link}>
-    <Stack direction="row"justifyContent="center"alignItems="center"p={1}>
-    <Typography variant="body1"sx={{color:'black',fontWeight:500,textWrap:'balance'}}>{name}</Typography> 
-      <img src={poster}alt=""style={{width:100,flex:1}}/>
-    </Stack>
-    <Stack>
-    <Typography variant="body1"sx={{paddingTop:2,textWrap:'balance',p:1}}>{desc}</Typography>   
-    </Stack>
-    <Stack direction="row"justifyContent="space-between"alignItems="flex-end"p={1}>
-        <Stack direction="row"justifyContent="center"gap={0.1}alignItems="end">
-   <Avatar alt=""src={logo} sx={{width:25}}/>
-   <Typography variant="caption">{channelname}</Typography>
-        </Stack>
-        <Typography variant="caption">
-        <TimeAgo
-  datetime={date}
-  />
-        </Typography>
-        </Stack>
-</Paper>
-</>
-    )
-}
-export default Feedlayout
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import TimeAgo from "timeago-react";
+import * as Colors from "@mui/material/colors";
+import "../App.css";
+const Feedlayout = ({ date, desc, link, poster }) => {
+  return (
+    <CardActionArea onClick={() => (window.location.href = link)}>
+      <Card>
+        <CardMedia component={"img"} src={poster} />
+        <CardContent>
+          <Box
+            component="h6"
+            dangerouslySetInnerHTML={{ __html: desc }}
+            sx={{
+              fontWeight: 400,
+              fontFamily: "roboto",
+              fontSize: 15,
+              color: Colors.grey[800],
+              lineHeight: 1.6,
+            }}
+            id="news-description"
+          />
+        </CardContent>
+        <CardActions>
+          <Typography variant="caption">
+            <TimeAgo datetime={date} />
+          </Typography>
+        </CardActions>
+      </Card>
+    </CardActionArea>
+  );
+};
+export default Feedlayout;
